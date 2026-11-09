@@ -18,6 +18,7 @@ sys.path.insert(0, os.path.join(BASE_DIR, "apps"))
 env = environ.Env(
     DEBUG=(bool, True),
     SECRET_KEY=(str, ""),
+    JWT_SIGNING_KEY=(str, ""),
     ENVIRONMENT=(str, "development"),
     ALLOWED_HOSTS=(list, []),
     CORS_ALLOWED_ORIGINS=(list, []),
@@ -40,9 +41,26 @@ if not SECRET_KEY and not DEBUG:
 elif not SECRET_KEY:
     SECRET_KEY = "django-insecure-graviblog-dev-key-change-in-production-only"
 
+# Dedicated JWT Signing Key (Cryptographic Isolation)
+JWT_SIGNING_KEY = env("JWT_SIGNING_KEY")
+if not JWT_SIGNING_KEY and not DEBUG:
+    raise ValueError("FATAL: JWT_SIGNING_KEY environment variable must be set in non-debug environments.")
+elif not JWT_SIGNING_KEY:
+    JWT_SIGNING_KEY = "django-insecure-graviblog-dev-jwt-key-never-use-in-production"
+
+INSECURE_DEV_JWT_KEYS = {
+    "django-insecure-graviblog-dev-jwt-key-never-use-in-production",
+    "django-insecure-dev-jwt-key-never-use-in-production",
+}
+if not DEBUG and JWT_SIGNING_KEY in INSECURE_DEV_JWT_KEYS:
+    raise ValueError("FATAL: Insecure JWT_SIGNING_KEY configured in production.")
+
+if JWT_SIGNING_KEY and SECRET_KEY and JWT_SIGNING_KEY == SECRET_KEY:
+    raise ValueError("FATAL: JWT_SIGNING_KEY must not be identical to SECRET_KEY.")
+
 # Dynamic host resolution
 raw_allowed_hosts = env("ALLOWED_HOSTS")
-fallback_hosts = ["localhost", "127.0.0.1", "backend", "django-app"]
+fallback_hosts = ["localhost", "127.0.0.1", "backend", "django-app", "testserver"]
 ALLOWED_HOSTS = list(dict.fromkeys(raw_allowed_hosts + fallback_hosts))
 
 # Dynamic CORS & CSRF origin handling
@@ -242,6 +260,7 @@ JWT_AUTH = {
     "REFRESH_COOKIE_NAME": "pod_refresh_token",
     "ALGORITHM": "HS256",
 }
+AUTH_COOKIE_PATH = "/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
