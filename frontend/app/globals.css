@@ -1,0 +1,112 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@700;800;900&family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&family=Work+Sans:wght@400;500;600;700&display=swap');
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --font-epilogue: 'Epilogue', sans-serif;
+  --font-worksans: 'Work Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --bg-canvas: #fff9ef;
+  --bg-panel: #FAF4EB;
+  --color-primary: #FF8A3D;
+  --color-secondary: #FF6B97;
+  --color-tertiary: #4DEEEA;
+  --color-yellow: #FFE600;
+  --color-mint: #70E000;
+  --color-ink: #000000;
+}
+
+.dark {
+  --bg-canvas: #12100e;
+  --bg-panel: #1e1b18;
+  --color-primary: #ff8a3d;
+  --color-secondary: #ff6b97;
+  --color-tertiary: #4deeea;
+  --color-yellow: #ffe600;
+  --color-mint: #70e000;
+  --color-ink: #000000;
+}
+
+body {
+  font-family: var(--font-worksans);
+  background-color: var(--bg-canvas);
+  color: #1d1b16;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.dark body {
+  color: #f6f0e7;
+}
+
+h1, h2, h3, h4, h5, h6, .font-display {
+  font-family: var(--font-epilogue);
+}
+
+.font-mono-code {
+  font-family: var(--font-mono);
+}
+
+/* Neo-Brutalist Shadow Utilities */
+.shadow-neo {
+  box-shadow: 4px 4px 0px #000000;
+}
+
+.shadow-neo-lg {
+  box-shadow: 6px 6px 0px #000000;
+}
+
+.shadow-neo-sm {
+  box-shadow: 2px 2px 0px #000000;
+}
+
+.shadow-neo-hover {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.shadow-neo-hover:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000000;
+}
+
+.shadow-neo-hover:active,
+.btn-press:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #000000;
+}
+
+/* Custom Scrollbar for Neo-Brutalism */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF4EB;
+  border-left: 3px solid #000;
+}
+::-webkit-scrollbar-thumb {
+  background: #FF8A3D;
+  border: 2px solid #000;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #FF6B97;
+}
+
+/* Ticker marquee animation */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}

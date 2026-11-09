@@ -1,0 +1,6 @@
+{
+  "name": "Graviblog",
+  "description": "Unapologetic Neo-Brutalist Gaming & Creative News Blog",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
