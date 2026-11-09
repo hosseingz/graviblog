@@ -1,0 +1,318 @@
+{
+    "version":  "1.0.0",
+    "last_updated":  "2026-11-09T09:59:29+03:00",
+    "installed":  [
+                      {
+                          "file":  ".agents\\agents\\suite-api-contract-reviewer.md",
+                          "sha256":  "874C820A54329B8F306DE4C4DBA147B94E01F510B160B31A504A000F20FF47B3",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\agents\\suite-auth-security-reviewer.md",
+                          "sha256":  "7348117EF829B4A5C463700982E489EFA3B3E8FC447F3DD0178B2DA51AB078FD",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\agents\\suite-backend-architect.md",
+                          "sha256":  "BA2AFFFC28FA2B45BC786936E730637162EDE10F322AD038BD874ADBE6D1B969",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\agents\\suite-data-cache-engineer.md",
+                          "sha256":  "BA492BC446147338D755C7026C929858D38A0C8F1885E5D9A98EF01D484F0E59",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\agents\\suite-devops-platform.md",
+                          "sha256":  "38B49C383A64D9581AF24BA47E62C73E2AB8B01D7EB25C7B5C48C12B3BA2EA1E",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\agents\\suite-frontend-integrator.md",
+                          "sha256":  "15958641B36BA3267C8C9DD1A641882FB4220536B99C9D7E0B6392D45341CCC3",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\agents\\suite-qa-release-gate.md",
+                          "sha256":  "6883F3EC6696B8E2764DFE56A857969F69B62CFD24550EAE1DA6B8D280F6FEA2",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\skills\\auth-jwt-cookie-session\\SKILL.md",
+                          "sha256":  "126680526D0A6781978953F7D0E15372EBC03E00B374733F373EFD972A162424",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\skills\\auth-jwt-cookie-session\\references\\cookie-lifecycle.md",
+                          "sha256":  "A60674E5094085192603CE52C4427C3815D12C7A42B1F5702ACDF97279A581B8",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\skills\\auth-jwt-cookie-session\\references\\sms-otp-workflow.md",
+                          "sha256":  "BFFC93F342C98CE1B65CA8BABF584BC0A1B8BE88CE23BA2EAA2287E057371834",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\skills\\auth-jwt-cookie-session\\resources\\backend\\authentication.py",
+                          "sha256":  "4472D5AC078EDFEBB5BE074B082CE0E09FF5D39A5B6E138E325F958D645C3334",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\skills\\auth-jwt-cookie-session\\resources\\backend\\views_auth.py",
+                          "sha256":  "E508E9734C35C7FCD6438C37FFB43838CFB15D240B36E4852F7E280FEB7BE41E",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\skills\\auth-jwt-cookie-session\\resources\\frontend\\middleware.ts",
+                          "sha256":  "D907CBF0F8B68173E1E02C5A5A830FFA3E2B5A7A2F03767E1A24317ED78D7B63",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\skills\\auth-jwt-cookie-session\\resources\\frontend\\useAuthStore.ts",
+                          "sha256":  "92FA38C8CA4D729A57E5617A1DB36FEBAA0539D47FDE17E87E1D5A6936AA982E",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\skills\\django-core-architecture\\SKILL.md",
+                          "sha256":  "1DC20F1CFFA14FB7EDE51924CB1CA0D7B295292FD7FFE749D43F6ABC5D1CB2BE",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\skills\\django-core-architecture\\references\\syspath-resolution.md",
+                          "sha256":  "820CA7E0860B5411F9E01E18B58E66F2AAF3874B546E83FE6F9B34A9884C6033",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\skills\\django-core-architecture\\resources\\apps_init.py",
+                          "sha256":  "7F397F38DF891601C1AFB48782ED30F0CAE892E83D8F8083B29AAB57FD7DA0CF",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\skills\\django-core-architecture\\resources\\asgi.py",
+                          "sha256":  "353EED71FFC33215C8A81DEB467E9F880F6AE6E5BC2A94A666ECDEAAD6F063A3",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\skills\\django-core-architecture\\resources\\manage.py",
+                          "sha256":  "9E055A3CA49F173675232D3F61D1FEB89F1350708FB25A002F6D3EDEFEEC6DB4",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\skills\\django-core-architecture\\resources\\settings.py",
+                          "sha256":  "29142FB42C3E9213FB8F20E2E5EBF30B61DE72E2C45A73BA3EF4101903CDFC91",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\skills\\django-core-architecture\\resources\\urls.py",
+                          "sha256":  "95997BA985F6970D952A7648A070EE13F076C04819739FBD1F108CD56F2E620E",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\skills\\django-core-architecture\\resources\\wsgi.py",
+                          "sha256":  "E1B7AD2BAB81CF0A5EF4D95E7BD1D17E464EDE853AC31A8AFC2B22BC9162EEB0",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\skills\\django-docker-scaffold\\SKILL.md",
+                          "sha256":  "03943DF089A4E6F15A6F8E614BD0F8C605BE908F4FF06654237B4FD9CAEC974D",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\skills\\django-docker-scaffold\\references\\security-hardening.md",
+                          "sha256":  "C5874D02EEA4FB2BE40A0E6537EAF747E9EBE162203B2A5BB876633604E2545B",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\skills\\django-docker-scaffold\\resources\\.dockerignore",
+                          "sha256":  "31B0C193E4C1882A4520F52A46AD5099877455056ED1AF50EBDE27C29B6FDBC8",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\skills\\django-docker-scaffold\\resources\\.env.example",
+                          "sha256":  "B59C5DDB421C3E7E540AD967436D9E82EF97FA741A43EE787AC35042DFE64B45",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\skills\\django-docker-scaffold\\resources\\docker-compose.override.yml",
+                          "sha256":  "D01CA434BE8561E3B1DB77BB70D3B2BD029B81CFE275AEAA18D1165FCFAAF078",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\skills\\django-docker-scaffold\\resources\\docker-compose.yml",
+                          "sha256":  "2697D4EBD990C94B87CE94A1CFA881ECFD23C3ADFE888F8BB7ABAF4BFF807B1D",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\skills\\django-docker-scaffold\\resources\\Dockerfile.backend",
+                          "sha256":  "A14880E28CC8A2ADB4EE64A0AA48D6EB1F807E383E3DC634913FFCFF3CBA665F",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\skills\\django-docker-scaffold\\resources\\Dockerfile.frontend",
+                          "sha256":  "4D61E438C0AFB4334DCD52F040C08FDBA3C07A131CA914FBF025D6CD3403DF74",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\skills\\django-docker-scaffold\\resources\\entrypoint.sh",
+                          "sha256":  "9303A3A77607BC491008249F81BAE051BD7557D9FBC77D786A03F87DE068653D",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\skills\\django-docker-scaffold\\resources\\nginx.conf",
+                          "sha256":  "97671E95AA284EA5CCD74226787EEE65CA906728230B4E8B403A1F3A3BAE2BB0",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\skills\\domain-ecommerce-cart\\SKILL.md",
+                          "sha256":  "9058856EEC205DDCA33DED1F9BAB1760738F9D41E52EBB606BAB27B012BC20DE",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\skills\\domain-ecommerce-cart\\references\\monotonic-guard.md",
+                          "sha256":  "E2D2D4FBDDE4F15B57678029C827D7932350E2428AE1650923E2FC8A5220603B",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\skills\\domain-ecommerce-cart\\resources\\backend\\redis_cart.py",
+                          "sha256":  "BA676038389424CF7B84688251CDC1F69447716A0149A38024614E1EC8DAC456",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\skills\\domain-ecommerce-cart\\resources\\backend\\views_cart.py",
+                          "sha256":  "1B4093CFFA4F429AF660DF4AD2E1438721646D9EE37C39E1C317CF439020759B",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\skills\\domain-ecommerce-cart\\resources\\frontend\\cartCookies.ts",
+                          "sha256":  "E3F8B8CCBEAC44DC82AE7FFFA727FC56B2E254923A4CE24A15C748230A76144E",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\skills\\domain-ecommerce-cart\\resources\\frontend\\useCartStore.ts",
+                          "sha256":  "479547F9E88989AE6F1DB218A419014BE1D22241F3B51776C42805A781CB891E",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\skills\\nextjs-api-sync\\SKILL.md",
+                          "sha256":  "DF86CFD0D542FCFA2252E610D6E9B081C5E4D829FFEEF3AAF97B67A7552BD3E1",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\skills\\nextjs-api-sync\\references\\error-normalization.md",
+                          "sha256":  "7D04CC47E7F6D1CAA3F4A193C024B12C724F25EE9AD9A977E75E2848D4855E8D",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\skills\\nextjs-api-sync\\references\\ssr-vs-csr-routing.md",
+                          "sha256":  "026A67F3556B24D415665308C0A2D7BA3B86EEF9E94F261441AC1F0570C9F565",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\skills\\nextjs-api-sync\\resources\\apiClient.ts",
+                          "sha256":  "B83AAE4C8C37CD8D3003B5912C1F7F97AE07B4832CA9D10EB463D0FA51BC14E2",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\skills\\nextjs-api-sync\\resources\\apiConfig.ts",
+                          "sha256":  "606A3A3870F1632C546F863D920152F3F2F9B1835AE4FA42A4507B1AE8D15830",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\skills\\nextjs-api-sync\\resources\\errorUtils.ts",
+                          "sha256":  "EF07EE3D526D1859C10B69324B150501A292787AC5B8F6F388751B370F1B2DB3",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\skills\\nextjs-api-sync\\resources\\serverFetch.ts",
+                          "sha256":  "CBD6E7C3B3C544709E6415C6DF3E4A76049B5B445CB9C9B3B9D3324A641AA8E6",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\rules\\ai-guardrails.md",
+                          "sha256":  "CA859FCDBC1148D2674639560BAD4B1FF779960EB3DB06ADEA038DD2EEB67C16",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\rules\\role-delegation.md",
+                          "sha256":  "6B9A0BB862311854CEF51964DCA1ADA9BB5EFC3E480C8D663F012DCA66DFAABE",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\rules\\security-protocols.md",
+                          "sha256":  "256F8207ED2381773EE38BC024F36FC129F3AE58CFAC413D8EAE104DA0555672",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\workflows\\01-scaffold-fullstack-app.md",
+                          "sha256":  "386840D40E745515657FDF3196CC3D7D71CF4E5E3E661E424BAEE92129B05F5F",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\workflows\\02-setup-secure-auth.md",
+                          "sha256":  "3BF48483AF617882697DC3D5DB17D02C2B6DED800928BAD96DFAAEBCEF6C5567",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\workflows\\03-enable-cart-feature.md",
+                          "sha256":  "AE2C1D2EFE4384760BB7E61F06A37E392D777DF374676D76EDF435380F090B47",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      },
+                      {
+                          "file":  ".agents\\workflows\\rosters.json",
+                          "sha256":  "9183D518AF47FC2E4ADC577598B839583D4F7F67824E2A34E37646C010B1A52E",
+                          "installed_at":  "2026-11-09T09:59:28+03:00",
+                          "source_version":  "1.0.0"
+                      }
+                  ]
+}
