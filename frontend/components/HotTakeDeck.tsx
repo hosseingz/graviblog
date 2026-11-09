@@ -1,17 +1,41 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Zap, MessageSquare, ThumbsUp } from 'lucide-react';
-import { HOT_TAKES } from '@/lib/posts';
+import apiClient from '@/lib/api/apiClient';
 
 export default function HotTakeDeck() {
   const [takeIndex, setTakeIndex] = useState(0);
-  const take = HOT_TAKES[takeIndex];
-  const [upvotes, setUpvotes] = useState(take.totalVotes);
+  const [takes, setTakes] = useState<any[]>([]);
+  const [upvotes, setUpvotes] = useState(0);
   const [hasVoted, setHasVoted] = useState(false);
 
+  useEffect(() => {
+    // In lieu of a direct endpoint, let's fetch a few popular posts and use them as "hot takes"
+    const fetchTakes = async () => {
+      try {
+        const response = await apiClient.get('/api/v1/posts/?ordering=popular');
+        const results = response.data.results || response.data || [];
+        const hotTakes = results.slice(0, 5).map((r: any) => ({
+            opinion: r.title,
+            body: r.excerpt,
+            totalVotes: r.likes_count,
+        }));
+        if (hotTakes.length > 0) {
+            setTakes(hotTakes);
+            setUpvotes(hotTakes[0].totalVotes);
+        }
+      } catch (e) {
+        console.error('Failed to fetch hot takes', e);
+      }
+    };
+    fetchTakes();
+  }, []);
+
+  const take = takes[takeIndex] || { opinion: 'Loading...', body: 'Loading...', totalVotes: 0 };
+
   const handleVote = () => {
-    if (!hasVoted) {
+    if (!hasVoted && takes.length > 0) {
       setUpvotes((prev) => prev + 1);
       setHasVoted(true);
     }
@@ -52,15 +76,22 @@ export default function HotTakeDeck() {
           } text-black border-2 border-black font-mono-code text-xs font-black py-2 px-3 rounded shadow-neo-sm active:translate-x-0.5 active:translate-y-0.5 transition-all flex items-center justify-center gap-1.5 cursor-pointer`}
         >
           <ThumbsUp className="w-3.5 h-3.5" />
-          <span>AGREE? {Math.round((upvotes / (upvotes + 40)) * 100)}% UPVOTE</span>
+          <span>AGREE? {Math.round((upvotes / (upvotes + 40)) * 100) || 0}% UPVOTE</span>
         </button>
 
         <button
-          onClick={() => setTakeIndex((prev) => (prev + 1) % HOT_TAKES.length)}
+          onClick={() => {
+              if (takes.length > 0) {
+                  const newIdx = (takeIndex + 1) % takes.length;
+                  setTakeIndex(newIdx);
+                  setUpvotes(takes[newIdx].totalVotes);
+                  setHasVoted(false);
+              }
+          }}
           className="bg-black text-white hover:bg-[#FF8A3D] hover:text-black border-2 border-black font-mono-code text-xs font-black py-2 px-3 rounded shadow-neo-sm active:translate-x-0.5 active:translate-y-0.5 transition-all flex items-center justify-center gap-1 cursor-pointer whitespace-nowrap"
         >
           <MessageSquare className="w-3.5 h-3.5" />
-          <span>SOUND OFF ({take.totalVotes / 10})</span>
+          <span>SOUND OFF ({Math.round(take.totalVotes / 10)})</span>
         </button>
       </div>
     </div>

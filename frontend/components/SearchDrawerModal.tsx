@@ -203,7 +203,7 @@ export default function SearchDrawerModal({ isOpen, onClose }: SearchDrawerModal
             ) : (
               filteredPosts.map((post) => (
                 <Link
-                  key={post.id}
+                  key={post.slug}
                   href={`/articles/${post.slug}`}
                   onClick={onClose}
                   className="block p-3.5 bg-white dark:bg-[#2a2622] border-2 border-black rounded hover:bg-[#FAF4EB] dark:hover:bg-[#322c28] hover:border-black shadow-neo-sm hover:shadow-neo transition-all group"
