@@ -222,3 +222,4 @@ __marimo__/
 # Agent review and handoff reports
 reports/
 
+migrations/
