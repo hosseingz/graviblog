@@ -1,0 +1,8 @@
+# Ensure Unix LF line endings for shell scripts and docker entrypoints
+*.sh text eol=lf
+entrypoint.sh text eol=lf
+
+# Dockerfiles must keep LF endings as well: CRLF breaks RUN line continuations
+# on Windows checkouts (core.autocrlf=true).
+Dockerfile text eol=lf
+*.Dockerfile text eol=lf
