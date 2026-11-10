@@ -4,6 +4,8 @@ import jwt
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.core.cache import cache
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import ensure_csrf_cookie
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -25,6 +27,7 @@ logger = logging.getLogger(__name__)
 User = get_user_model()
 
 
+@method_decorator(ensure_csrf_cookie, name="dispatch")
 class LoginAPIView(APIView):
     """
     Authenticates user and sets dual HttpOnly JWT cookies.
@@ -217,6 +220,7 @@ class MeAPIView(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
+@method_decorator(ensure_csrf_cookie, name="dispatch")
 class RegisterAPIView(APIView):
     """
     Registration endpoint for creating reader accounts.

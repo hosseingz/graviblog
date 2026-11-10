@@ -53,6 +53,13 @@ class AuthAPITests(TestCase):
         self.assertEqual(response.cookies[ACCESS_COOKIE_NAME]["samesite"], "Lax")
         self.assertEqual(response.cookies[REFRESH_COOKIE_NAME]["samesite"], "Lax")
 
+        # Verify CSRF cookie is present, non-empty, accessible to client JS, Path=/, SameSite=Lax
+        self.assertIn(settings.CSRF_COOKIE_NAME, response.cookies)
+        self.assertTrue(len(response.cookies[settings.CSRF_COOKIE_NAME].value) > 0)
+        self.assertFalse(response.cookies[settings.CSRF_COOKIE_NAME]["httponly"])
+        self.assertEqual(response.cookies[settings.CSRF_COOKIE_NAME]["path"], "/")
+        self.assertEqual(response.cookies[settings.CSRF_COOKIE_NAME]["samesite"], "Lax")
+
     def test_me_endpoint_with_cookie(self):
         login_res = self.client.post(
             "/api/v1/auth/login/",
@@ -272,3 +279,105 @@ class AuthAPITests(TestCase):
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.user.refresh_from_db()
         self.assertEqual(self.user.bio, "Bearer authenticated mutation")
+
+    def test_register_creates_user_and_sets_cookies(self):
+        payload = {
+            "username": "new_reader",
+            "email": "reader@graviblog.dev",
+            "password": "SecurePassword123!",
+        }
+        response = self.client.post("/api/v1/auth/register/", data=payload, format="json")
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        data = response.json()
+        self.assertEqual(data["status"], "created")
+        self.assertIn("user", data)
+        self.assertEqual(data["user"]["username"], "new_reader")
+        self.assertEqual(data["user"]["email"], "reader@graviblog.dev")
+        self.assertEqual(data["user"]["role"], "READER")
+        self.assertEqual(data["user"]["handle"], "NEW_READER")
+
+        # Verify user persistence and password hashing
+        new_user = User.objects.get(username="new_reader")
+        self.assertEqual(new_user.email, "reader@graviblog.dev")
+        self.assertTrue(new_user.check_password("SecurePassword123!"))
+        self.assertEqual(new_user.role, "READER")
+        self.assertEqual(new_user.handle, "NEW_READER")
+
+        # Verify HttpOnly JWT cookies
+        self.assertIn(ACCESS_COOKIE_NAME, response.cookies)
+        self.assertIn(REFRESH_COOKIE_NAME, response.cookies)
+        self.assertTrue(response.cookies[ACCESS_COOKIE_NAME]["httponly"])
+        self.assertTrue(response.cookies[REFRESH_COOKIE_NAME]["httponly"])
+        self.assertEqual(response.cookies[ACCESS_COOKIE_NAME]["path"], "/")
+        self.assertEqual(response.cookies[REFRESH_COOKIE_NAME]["path"], "/")
+        self.assertEqual(response.cookies[ACCESS_COOKIE_NAME]["samesite"], "Lax")
+        self.assertEqual(response.cookies[REFRESH_COOKIE_NAME]["samesite"], "Lax")
+
+        # Verify CSRF cookie (non-HttpOnly for client-side JavaScript access)
+        self.assertIn(settings.CSRF_COOKIE_NAME, response.cookies)
+        self.assertTrue(len(response.cookies[settings.CSRF_COOKIE_NAME].value) > 0)
+        self.assertFalse(response.cookies[settings.CSRF_COOKIE_NAME]["httponly"])
+        self.assertEqual(response.cookies[settings.CSRF_COOKIE_NAME]["path"], "/")
+        self.assertEqual(response.cookies[settings.CSRF_COOKIE_NAME]["samesite"], "Lax")
+
+    def test_register_validation_errors(self):
+        # 1. Reject password under 8 characters
+        res_short = self.client.post(
+            "/api/v1/auth/register/",
+            data={"username": "short_user", "email": "short@dev.io", "password": "abc"},
+            format="json",
+        )
+        self.assertEqual(res_short.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertIn("password", res_short.json())
+        self.assertFalse(User.objects.filter(username="short_user").exists())
+
+        # 2. Reject duplicate username
+        res_dup = self.client.post(
+            "/api/v1/auth/register/",
+            data={"username": "test_gamer", "email": "another@dev.io", "password": "Password123!"},
+            format="json",
+        )
+        self.assertEqual(res_dup.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertIn("username", res_dup.json())
+
+    def test_end_to_end_csrf_roundtrip_after_registration(self):
+        csrf_client = APIClient(enforce_csrf_checks=True)
+        reg_payload = {
+            "username": "csrf_tester",
+            "email": "csrftester@graviblog.dev",
+            "password": "Password123!",
+        }
+        reg_response = csrf_client.post("/api/v1/auth/register/", data=reg_payload, format="json")
+        self.assertEqual(reg_response.status_code, status.HTTP_201_CREATED)
+
+        csrf_token = reg_response.cookies[settings.CSRF_COOKIE_NAME].value
+        access_token = reg_response.cookies[ACCESS_COOKIE_NAME].value
+
+        csrf_client.cookies[settings.CSRF_COOKIE_NAME] = csrf_token
+        csrf_client.cookies[ACCESS_COOKIE_NAME] = access_token
+
+        # 1. State-changing PATCH with CSRF cookie & HTTP_X_CSRFTOKEN header succeeds
+        patch_ok = csrf_client.patch(
+            "/api/v1/auth/me/",
+            data={"bio": "Verified CSRF registered user bio"},
+            format="json",
+            HTTP_X_CSRFTOKEN=csrf_token,
+        )
+        self.assertEqual(patch_ok.status_code, status.HTTP_200_OK)
+        self.assertEqual(patch_ok.json()["bio"], "Verified CSRF registered user bio")
+
+        # 2. State-changing PATCH without HTTP_X_CSRFTOKEN header is rejected with 403 Forbidden
+        patch_fail = csrf_client.patch(
+            "/api/v1/auth/me/",
+            data={"bio": "Tampered bio without CSRF header"},
+            format="json",
+        )
+        self.assertEqual(patch_fail.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertIn("CSRF Failed", patch_fail.json()["detail"])
+
+    def test_profile_alias_endpoint(self):
+        access_token, _ = generate_token_pair(self.user)
+        self.client.cookies[ACCESS_COOKIE_NAME] = access_token
+        res = self.client.get("/api/v1/auth/profile/")
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
+        self.assertEqual(res.json()["username"], "test_gamer")
